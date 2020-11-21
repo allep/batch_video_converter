@@ -87,8 +87,8 @@ class VideoConverter():
         outputfile = sanitized + VideoConverter.OUTPUT_FILE_LABEL + file_ext
 
         # 2-pass conversion with ffmpeg
-        first_pass_cmd = VideoConverter.FFMPEG_BIN + ' -y -i \'' + inputfile + '\' -c:v libx264 -preset ultrafast -tune animation -b:v ' + VideoConverter.TARGET_VIDEO_BITRATE + ' -pass 1 -an -f mp4 /dev/null'
-        second_pass_cmd = VideoConverter.FFMPEG_BIN + ' -i \'' + inputfile + '\' -c:v libx264 -preset ultrafast -tune animation -b:v ' + VideoConverter.TARGET_VIDEO_BITRATE + ' -pass 2 -c:a aac -b:a ' + VideoConverter.TARGET_AUDIO_BITRATE + ' ' + outputfile
+        first_pass_cmd = VideoConverter.FFMPEG_BIN + ' -y -i \'' + inputfile + '\' -c:v libx264 -preset veryslow -tune animation -b:v ' + VideoConverter.TARGET_VIDEO_BITRATE + ' -pass 1 -an -f mp4 /dev/null'
+        second_pass_cmd = VideoConverter.FFMPEG_BIN + ' -i \'' + inputfile + '\' -c:v libx264 -preset veryslow -tune animation -b:v ' + VideoConverter.TARGET_VIDEO_BITRATE + ' -pass 2 -c:a aac -b:a ' + VideoConverter.TARGET_AUDIO_BITRATE + ' ' + outputfile
 
         # actual compression
         os.system(first_pass_cmd)
