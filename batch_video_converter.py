@@ -84,7 +84,7 @@ class VideoConverter():
         sanitized = sanitized.replace('_-', '_')
         sanitized = sanitized.replace('__', '_')
 
-        outputfile = sanitized + VideoConverter.OUTPUT_FILE_LABEL + file_ext
+        outputfile = sanitized + VideoConverter.OUTPUT_FILE_LABEL + ".mp4"
 
         # 2-pass conversion with ffmpeg
         first_pass_cmd = VideoConverter.FFMPEG_BIN + ' -y -i \'' + inputfile + '\' -c:v libx264 -preset veryslow -tune animation -b:v ' + VideoConverter.TARGET_VIDEO_BITRATE + ' -pass 1 -an -f mp4 /dev/null'
